@@ -19,7 +19,7 @@ COPY bin/ /usr/local/bin/
 RUN apt-get -yq update && \
     apt-get -yq --no-install-recommends install \
       rbldnsd perl && \
-    chmod 755 /usr/local/bin/rebuild_rbldns.pl /usr/local/bin/entrypoint.sh && \
+    chmod 755 /usr/local/bin/entrypoint.sh && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/log/*
 
 VOLUME $HOMEDIR
