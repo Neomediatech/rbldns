@@ -5,11 +5,11 @@
 version: '3.7'
 
 x-environment: &common-vars
-    TZ: Europe/Rome
-    ZONES: /zones
-    NS_SERVERS: 127.0.0.1
-    RBL_DOMAIN: bl.localhost.tld
-    USERNAME: rbldns
+    TZ: ${TZ:-Europe/Rome}
+    ZONES: ${ZONES:-/zones}
+    NS_SERVERS: ${NS_SERVERS:-127.0.0.1}
+    RBL_DOMAIN: ${RBL_DOMAIN:-bl.localhost.tld}
+    USERNAME: ${USERNAME:-rbldns}
 
 services:
   rbldns:
@@ -18,7 +18,7 @@ services:
     environment:
       << : *common-vars    
     volumes:
-      - zones:${ZONES:-/zones}
+      - zones:${ZONES}
     ports:
       - target: 53
         published: 53
