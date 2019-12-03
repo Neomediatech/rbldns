@@ -8,7 +8,7 @@ x-environment: &common-vars
     TZ: ${TZ:-Europe/Rome}
     ZONES: ${ZONES:-/zones}
     NS_SERVERS: ${NS_SERVERS:-127.0.0.1}
-#    RBL_DOMAIN: ${RBL_DOMAIN:-bl.localhost.tld}
+    RBL_DOMAIN: $ZONES/rbl_domain
     USERNAME: ${USERNAME:-rbldns}
 
 services:
