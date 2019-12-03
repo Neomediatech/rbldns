@@ -19,6 +19,11 @@ services:
       << : *common-vars    
     volumes:
       - zones:${ZONES:-/zones}
+    ports:
+      - target: 53
+        published: 53
+        protocol: udp
+        mode: host
     deploy:
       mode: replicated
       replicas: 1
