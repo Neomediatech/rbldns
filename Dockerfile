@@ -19,6 +19,5 @@ RUN apt-get -yq update && \
     chmod 755 /usr/local/bin/entrypoint.sh && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/log/*
 
-VOLUME $HOMEDIR
 EXPOSE 53/udp
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
