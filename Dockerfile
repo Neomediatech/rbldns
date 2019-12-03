@@ -2,10 +2,7 @@ FROM debian:stretch-slim
 ENV VERSION=1.0.0-r0 \ 
     BUILD_DATE=2019-12-03 \ 
     TZ=Europe/Rome \
-    DEBIAN_FRONTEND=noninteractive \
-    USERNAME=rbldns HOMEDIR=/rbldns CFG_NAME=dsbl \
-    RBL_DOMAIN=bl.localhost.tld \
-    NS_SERVERS=127.0.0.1 
+    DEBIAN_FRONTEND=noninteractive 
 
 LABEL maintainer="docker-dario@neomediatech.it" \ 
       org.label-schema.version=$VERSION \
