@@ -2,8 +2,8 @@
 
 export PID_FILE=/var/run/rbldnsd.pid
 
-mkdir -p $HOMEDIR/$CFG_NAME
-chown $USERNAME $HOMEDIR/$CFG_NAME
+mkdir -p $ZONES
+chown $USERNAME $ZONES
 
 chsh $USERNAME -s /bin/bash
 
@@ -13,7 +13,7 @@ bl="bl"
 wl="wl"
 
 su $USERNAME bash -c "
-  cd $HOMEDIR/$CFG_NAME
+  cd $ZONES
   [ -e $bl ] || touch $bl
   [ -e $wl ] || touch $wl
   if [ ! -e forward ]; then
@@ -21,6 +21,6 @@ su $USERNAME bash -c "
     echo '\$NS' 3600 \$NS_SERVERS >>forward
   fi"
 
-rbldnsd -f -n -r $HOMEDIR/$CFG_NAME -b 0.0.0.0/53 -p $PID_FILE \
+rbldnsd -f -n -r $ZONES -b 0.0.0.0/53 -p $PID_FILE \
   $RBL_DOMAIN:ip4set:$bl,$wl \
   $RBL_DOMAIN:generic:forward
