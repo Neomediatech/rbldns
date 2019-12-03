@@ -6,7 +6,7 @@ version: '3.7'
 
 x-environment: &common-vars
     TZ: Europe/Rome
-    ZONES: /rbldns
+    ZONES: /zones
     NS_SERVERS: 127.0.0.1
     RBL_DOMAIN: bl.localhost.tld
     USERNAME: rbldns
@@ -18,7 +18,7 @@ services:
     environment:
       << : *common-vars    
     volumes:
-      - zones:${ZONES:-/rbldns}
+      - zones:${ZONES:-/zones}
 
 volumes:
   zones:
