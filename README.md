@@ -14,7 +14,7 @@ These variables can be passed to the image from kubernetes.yaml or docker-compos
 | -------- | ------- | ----------- |
 | ZONES | /rbldns | directory for zone files |
 | NS_SERVERS | 127.0.0.1 | upstream nameservers having NS records |
-| RBL_DOMAIN | /zones/rbl_domain | file containing domain name to serve |
+| RBL_DOMAIN | bl.localhost.tld | domain name to serve |
 | TZ | Europe/Rome| time zone |
 | USERNAME | rbldns | username to run as |
 
