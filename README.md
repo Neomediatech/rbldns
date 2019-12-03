@@ -12,8 +12,7 @@ These variables can be passed to the image from kubernetes.yaml or docker-compos
 
 | Variable | Default | Description |
 | -------- | ------- | ----------- |
-| CFG_NAME | dsbl | config name (default: dsbl) |
-| HOMEDIR | /rbldns | home directory |
+| ZONES | /rbldns | directory for zone files |
 | NS_SERVERS | 127.0.0.1 | upstream nameservers having NS records |
 | RBL_DOMAIN | bl.localhost.tld | domain name to serve |
 | TZ | Europe/Rome| time zone |
