@@ -12,11 +12,12 @@ These variables can be passed to the image from kubernetes.yaml or docker-compos
 
 | Variable | Default | Description |
 | -------- | ------- | ----------- |
-| ZONES | /rbldns | directory for zone files |
+| ZONES | /data | directory for zone files |
 | NS_SERVERS | 127.0.0.1 | upstream nameservers having NS records |
 | RBL_DOMAIN | bl.localhost.tld | domain name to serve |
 | TZ | Europe/Rome| time zone |
 | USERNAME | rbldns | username to run as |
+| LOGGING | 0 | 1 to enable logging on $ZONES/rbldns.log |
 
 ### Zone file format
 http://www.corpit.ru/mjt/rbldnsd.html
