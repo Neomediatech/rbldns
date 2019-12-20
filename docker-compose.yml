@@ -6,10 +6,11 @@ version: '3.7'
 
 x-environment: &common-vars
     TZ: ${TZ:-Europe/Rome}
-    ZONES: ${ZONES:-/zones}
+    ZONES: ${ZONES:-/data}
     NS_SERVERS: ${NS_SERVERS:-127.0.0.1}
     RBL_DOMAIN: ${RBL_DOMAIN:-bl.localhost.tld}
     USERNAME: ${USERNAME:-rbldns}
+    LOGGING: 0
 
 services:
   rbldns:
