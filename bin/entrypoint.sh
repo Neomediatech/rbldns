@@ -2,10 +2,11 @@
 
 export PID_FILE=/var/run/rbldnsd.pid
 
-ZONES=${ZONES:-/zones}
+ZONES=${ZONES:-/data}
 USERNAME=${USERNAME:-rbldns}
 RBL_DOMAIN=${RBL_DOMAIN:-bl.localhost.tld}
 NS_SERVERS=${NS_SERVERS:-127.0.0.1}
+LOGGING=${LOGGING:-0}
 
 mkdir -p $ZONES
 chown $USERNAME $ZONES
@@ -17,6 +18,12 @@ bl="bl"
 # whitelist
 wl="wl"
 
+if [ $LOGGING -eq 1 ]; then
+  LOGGING="-l $ZONES/rbldns.log"
+  touch "$ZONES/rbldns.log"
+else
+  LOGGING=""
+fi
 
 cd $ZONES
 [ -e $bl ] || touch $bl
@@ -28,6 +35,6 @@ fi
 
 chown $USERNAME $bl $wl forward
 
-rbldnsd -f -n -r $ZONES -b 0.0.0.0/53 -p $PID_FILE \
+rbldnsd $LOGGING -f -n -r $ZONES -b 0.0.0.0/53 -p $PID_FILE \
   $RBL_DOMAIN:ip4set:$bl,$wl \
   $RBL_DOMAIN:generic:forward
