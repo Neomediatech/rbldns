@@ -19,7 +19,7 @@ bl="bl"
 wl="wl"
 
 if [ $LOGGING -eq 1 ]; then
-  LOGGING="-l +$ZONES/rbldns.log"
+  LOGGING="-l +rbldns.log"
   touch "$ZONES/rbldns.log"
 else
   LOGGING=""
