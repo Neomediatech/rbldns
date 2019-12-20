@@ -10,7 +10,7 @@ x-environment: &common-vars
     NS_SERVERS: ${NS_SERVERS:-127.0.0.1}
     RBL_DOMAIN: ${RBL_DOMAIN:-bl.localhost.tld}
     USERNAME: ${USERNAME:-rbldns}
-    LOGGING: 0
+    LOGGING: ${LOGGING:-0}
 
 services:
   rbldns:
