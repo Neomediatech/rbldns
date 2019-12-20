@@ -21,6 +21,7 @@ wl="wl"
 if [ $LOGGING -eq 1 ]; then
   LOGGING="-l +rbldns.log"
   touch "$ZONES/rbldns.log"
+  chown $USERNAME "$ZONES/rbldns.log"
 else
   LOGGING=""
 fi
