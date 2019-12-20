@@ -19,7 +19,7 @@ services:
     environment:
       << : *common-vars    
     volumes:
-      - zones:${ZONES:-/zones}
+      - zones:${ZONES:-/data}
     ports:
       - target: 53
         published: 5353
