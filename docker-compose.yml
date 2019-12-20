@@ -20,6 +20,7 @@ services:
       << : *common-vars    
     volumes:
       - zones:${ZONES:-/data}
+      - /etc/localtime:/etc/localtime:ro
     ports:
       - target: 53
         published: 5353
