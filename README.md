@@ -18,6 +18,7 @@ These variables can be passed to the image from kubernetes.yaml or docker-compos
 | TZ | Europe/Rome| time zone |
 | USERNAME | rbldns | username to run as |
 | LOGGING | 0 | 1 to enable logging on $ZONES/rbldns.log |
+| CUSTOM_ZONES | (none) | Add custom zone files, separated by comma (ex: myzone,otherzone.txt,third.zone). |
 
 ### Zone file format
 http://www.corpit.ru/mjt/rbldnsd.html
