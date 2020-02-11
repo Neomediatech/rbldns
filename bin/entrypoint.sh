@@ -8,6 +8,7 @@ RBL_DOMAIN=${RBL_DOMAIN:-bl.localhost.tld}
 NS_SERVERS=${NS_SERVERS:-127.0.0.1}
 LOGGING=${LOGGING:-0}
 CUSTOM_ZONES=${CUSTOM_ZONES:-}
+CUSTOM_CONFIG=${CUSTOM_CONFIG:-}
 
 mkdir -p $ZONES
 chown $USERNAME $ZONES
@@ -55,4 +56,4 @@ chown $USERNAME $bl $wl forward
 
 rbldnsd $LOGGING -f -n -r $ZONES -b 0.0.0.0/53 -p $PID_FILE \
   $RBL_DOMAIN:ip4set:$bl,${wl}$custom_zone \
-  $RBL_DOMAIN:generic:forward
+  $RBL_DOMAIN:generic:forward $CUSTOM_CONFIG
