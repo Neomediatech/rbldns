@@ -7,6 +7,7 @@ USERNAME=${USERNAME:-rbldns}
 RBL_DOMAIN=${RBL_DOMAIN:-bl.localhost.tld}
 NS_SERVERS=${NS_SERVERS:-127.0.0.1}
 LOGGING=${LOGGING:-0}
+CUSTOM_ZONES=${CUSTOM_ZONES:-}
 
 mkdir -p $ZONES
 chown $USERNAME $ZONES
@@ -34,8 +35,24 @@ if [ ! -e forward ]; then
   echo '$NS' 3600 $NS_SERVERS >>forward
 fi
 
+if [ -n "$CUSTOM_ZONES" ]; then
+  IFS=,
+  tmpzone=""
+  echo "Configuring custom zones..."
+  for zone in $CUSTOM_ZONES; do
+    if [ -s $zone ]; then
+      tmpzone="$tmpzone,$zone"
+    else
+      echo "WARN: file $ZONES/$zone does't exists or has 0 size, skipping configuring it..."
+    fi
+  done
+  unset IFS
+fi
+
+[ -n "$tmpzone" ] && custom_zone="$tmpzone" || custom_zone=""
+
 chown $USERNAME $bl $wl forward
 
 rbldnsd $LOGGING -f -n -r $ZONES -b 0.0.0.0/53 -p $PID_FILE \
-  $RBL_DOMAIN:ip4set:$bl,$wl \
+  $RBL_DOMAIN:ip4set:$bl,${wl}$custom_zone \
   $RBL_DOMAIN:generic:forward
