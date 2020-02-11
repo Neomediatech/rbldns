@@ -11,6 +11,7 @@ x-environment: &common-vars
     RBL_DOMAIN: ${RBL_DOMAIN:-bl.localhost.tld}
     USERNAME: ${USERNAME:-rbldns}
     LOGGING: ${LOGGING:-0}
+    CUSTOM_ZONES: ${CUSTOM_ZONES:-}
 
 services:
   rbldns:
