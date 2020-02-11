@@ -12,6 +12,7 @@ x-environment: &common-vars
     USERNAME: ${USERNAME:-rbldns}
     LOGGING: ${LOGGING:-0}
     CUSTOM_ZONES: ${CUSTOM_ZONES:-}
+    CUSTOM_CONFIG: ${CUSTOM_CONFIG:-}
 
 services:
   rbldns:
