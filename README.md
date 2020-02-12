@@ -1,4 +1,3 @@
-# rbldns-static-docker
 rbldnsd dockerized daemon to run a RBL list
 
 Inspired from https://github.com/instantlinux/docker-tools/tree/master/images/blacklist .  
