@@ -14,10 +14,6 @@ x-environment: &common-vars
     CUSTOM_ZONES: ${CUSTOM_ZONES:-}
     CUSTOM_CONFIG: ${CUSTOM_CONFIG:-}
 
-x-vol-tz: &v-tz /etc/timezone:/etc/timezone:ro
-x-vol-ltime: &v-ltime /etc/localtime:/etc/localtime:ro
-x-vol-lgen: &v-lgen /etc/locale.gen:/etc/locale.gen:ro
-
 services:
   rbldns:
     image: neomediatech/rbldns-static
@@ -25,9 +21,9 @@ services:
     environment:
       << : *common-vars    
     volumes:
-      - *v-tz
-      - *v-ltime
-      - *v-lgen
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/locale.gen:/etc/locale.gen:ro
       - zones:${ZONES:-/data}
       - /etc/localtime:/etc/localtime:ro
     ports:
