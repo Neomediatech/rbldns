@@ -1,7 +1,7 @@
 FROM neomediatech/ubuntu-base:latest
 
 ENV VERSION=0.998b~pre1-1 \
-    SERVICE=rbldns-static-docker
+    SERVICE=rbldns
 
 LABEL maintainer="docker-dario@neomediatech.it" \
       org.label-schema.version=$VERSION \
