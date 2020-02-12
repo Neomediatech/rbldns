@@ -20,6 +20,9 @@ These variables can be passed to the image from kubernetes.yaml or docker-compos
 | CUSTOM_ZONES | (none) | Add custom zone files, separated by comma (ex: myzone,otherzone.txt,third.zone). |
 | CUSTOM_CONFIG | (none) | Add custom config (ex: mybl.domain.tld:ip4set:blfile.txt). WARN! Incorrect parameters can smash your server! YHBW |
 
+### .rbl files
+Put file(s) with .rbl extension in /data and they will be automagically included as zone file for RBL_DOMAIN zone name.  
+
 ### Zone file format
 http://www.corpit.ru/mjt/rbldnsd.html
 
