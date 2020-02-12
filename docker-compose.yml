@@ -16,7 +16,7 @@ x-environment: &common-vars
 
 services:
   rbldns:
-    image: neomediatech/rbldns-static
+    image: neomediatech/rbldns-static:latest
     hostname: rbldns
     environment:
       << : *common-vars    
