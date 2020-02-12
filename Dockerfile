@@ -1,9 +1,12 @@
-FROM neomediatech/ubuntu-base
-ENV DEBIAN_FRONTEND=noninteractive 
+FROM neomediatech/ubuntu-base:latest
 
-LABEL maintainer="docker-dario@neomediatech.it" \ 
+ENV VERSION=0.998b~pre1-1 \
+    SERVICE=rbldns-static-docker
+
+LABEL maintainer="docker-dario@neomediatech.it" \
+      org.label-schema.version=$VERSION \
       org.label-schema.vcs-type=Git \
-      org.label-schema.vcs-url=https://github.com/Neomediatech/rbldns-static-docker \
+      org.label-schema.vcs-url=https://github.com/Neomediatech/$SERVICE \
       org.label-schema.maintainer=Neomediatech
 
 COPY bin/entrypoint.sh /
