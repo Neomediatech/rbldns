@@ -54,6 +54,6 @@ fi
 
 chown $USERNAME $bl $wl forward
 
-rbldnsd $LOGGING -f -n -r $ZONES -b 0.0.0.0/53 -p $PID_FILE \
+rbldnsd $LOGGING -f -n -r $ZONES -vv -b 0.0.0.0/53 -p $PID_FILE \
   $RBL_DOMAIN:ip4set:$bl,${wl}$custom_zone \
   $RBL_DOMAIN:generic:forward $CUSTOM_CONFIG
