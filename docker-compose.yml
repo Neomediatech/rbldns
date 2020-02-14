@@ -27,7 +27,7 @@ services:
       - zones:${ZONES:-/data}
     ports:
       - target: 53
-        published: 5353
+        published: 53
         protocol: udp
         mode: host
     deploy:
