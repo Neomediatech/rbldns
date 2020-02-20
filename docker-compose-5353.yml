@@ -1,0 +1,56 @@
+##################
+##
+##  docker-compose version with 5353 port listening
+##
+##################
+# rbldns-static stack example
+# STACK_BASE_PATH [base folder where to host files, must exists]
+# STACK_BASE_PATH=folder_for_stack ; mkdir -p ${STACK_BASE_PATH}/data
+
+version: '3.7'
+
+x-environment: &common-vars
+    TZ: ${TZ:-Europe/Rome}
+    ZONES: ${ZONES:-/data}
+    NS_SERVERS: ${NS_SERVERS:-127.0.0.1}
+    RBL_DOMAIN: ${RBL_DOMAIN:-bl.localhost.tld}
+    USERNAME: ${USERNAME:-rbldns}
+    LOGGING: ${LOGGING:-0}
+    CUSTOM_ZONES: ${CUSTOM_ZONES:-}
+    CUSTOM_CONFIG: ${CUSTOM_CONFIG:-}
+
+services:
+  rbldns:
+    image: neomediatech/rbldns-static:latest
+    hostname: rbldns
+    environment:
+      << : *common-vars    
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/locale.gen:/etc/locale.gen:ro
+      - zones:${ZONES:-/data}
+    ports:
+      - target: 5353
+        published: 53
+        protocol: udp
+        mode: host
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: any
+
+volumes:
+  zones:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${STACK_BASE_PATH}/data
