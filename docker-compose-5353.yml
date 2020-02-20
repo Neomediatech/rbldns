@@ -31,8 +31,8 @@ services:
       - /etc/locale.gen:/etc/locale.gen:ro
       - zones:${ZONES:-/data}
     ports:
-      - target: 5353
-        published: 53
+      - target: 53
+        published: 5353
         protocol: udp
         mode: host
     deploy:
