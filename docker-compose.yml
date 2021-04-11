@@ -32,7 +32,7 @@ services:
       - zones:${ZONES:-/data}
     ports:
       - target: 53
-        published: 53
+        published: ${PORT:-53}
         protocol: udp
         mode: host
     deploy:
