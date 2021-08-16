@@ -1,6 +1,6 @@
-FROM neomediatech/ubuntu-base:latest
+FROM neomediatech/ubuntu-base:20.04
 
-ENV VERSION=0.998b~pre1-1 \
+ENV VERSION=0.999~20180516-3 \
     SERVICE=rbldns
 
 LABEL maintainer="docker-dario@neomediatech.it" \
